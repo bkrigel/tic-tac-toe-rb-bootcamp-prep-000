@@ -35,7 +35,26 @@ def position_taken?(board, index)
 end
 
 
+def turn(board)
+  puts "Please enter 1-9:"
+  input = gets.strip
+  index = input_to_index(input)
+  if valid_move?(board, index)
+    move(board, index)
+    display_board(board)
+  else
+    turn(board)
+  end
+end
 
+
+def play_count(board)
+  counter = 0
+  until counter == 9
+    turn(board)
+    counter += 1
+  end
+end
 
 WIN_COMBINATIONS = [
   [0,1,2],
